@@ -3,17 +3,48 @@ import  {Component} from "react";
 class Form extends Component {
     constructor(props){
         super(props);
-        this.state = {};
+        this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+        this.handleSecondNameChange = this.handleSecondNameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleAddressChange = this.handleAddressChange.bind(this);
+        this.handlePhoneChange = this.handlePhoneChange.bind(this);
+        this.handleGoalChange = this.handleGoalChange.bind(this);
     }
+
+    handleFirstNameChange(e){
+        this.props.onFirstNameChange(e.target.value);
+    }
+
+    handleSecondNameChange(e){
+        this.props.onSecondNameChange(e.target.value);
+    }
+
+    handleEmailChange(e){
+        this.props.onEmailChange(e.target.value);
+    }
+
+    handleAddressChange(e){
+        this.props.onAddressChange(e.target.value);
+    }
+
+    handlePhoneChange(e){
+        this.props.onPhoneChange(e.target.value);
+    }
+
+    handleGoalChange(e){
+        this.props.onGoalChange(e.target.value);
+    }
+
     render (){
         return(
             <form>
                 <section>
                     <h3>Personal Information</h3>
-                    <input placeholder="First Name" type="text"></input>
-                    <input placeholder="Last Name" type="text"></input>
-                    <input placeholder="Email" type="email"></input>
-                    <input placeholder="objective"></input>
+                    <input placeholder="First Name" type="text" onChange={this.handleFirstNameChange}></input>
+                    <input placeholder="Last Name" type="text" onChange={this.handleSecondNameChange}></input>
+                    <input placeholder="Email" type="email" onChange={this.handleEmailChange}></input>
+                    <input placeholder="Phone Number" type="tel" onChange={this.handlePhoneChange}></input>
+                    <input placeholder="Goal" onChange={this.handleGoalChange}></input>
                 </section>
                 <section>
                     <h3>Education</h3>

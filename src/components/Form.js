@@ -40,14 +40,15 @@ class Form extends Component {
             <form>
                 <section>
                     <h3>Personal Information</h3>
-                    <input placeholder="First Name" type="text" onChange={this.handleFirstNameChange}></input>
-                    <input placeholder="Last Name" type="text" onChange={this.handleSecondNameChange}></input>
-                    <input placeholder="Email" type="email" onChange={this.handleEmailChange}></input>
-                    <input placeholder="Phone Number" type="tel" onChange={this.handlePhoneChange}></input>
-                    <input placeholder="Goal" onChange={this.handleGoalChange}></input>
+                    <input name="firstName" placeholder="First Name" type="text" onChange={this.handleFirstNameChange}></input>
+                    <input name="lastName" placeholder="Last Name" type="text" onChange={this.handleSecondNameChange}></input>
+                    <input name="email" placeholder="Email" type="email" onChange={this.handleEmailChange}></input>
+                    <input name="phone" placeholder="Phone Number" type="tel" onChange={this.handlePhoneChange}></input>
+                    <input name="address" placeholder="Address" type="text"></input>
+                    <input name="goal" placeholder="Goal" onChange={this.handleGoalChange}></input>
                 </section>
                 <section>
-                    <h3>Education</h3>
+                    <h3>Education</h3> 
                     <Education />
                     <button> Add </button>
                 </section>
@@ -74,16 +75,15 @@ class Form extends Component {
 class Education extends Component {
     constructor(props){
         super(props);
-        this.state = {};
     }
     render (){
         return (
             <div>
-                <input placeholder="University Name" type="text"></input>
-                <input placeholder="Degree" type="text"></input>
-                <input placeholder="GPA" type="number" step="0.1" max="4.0"></input>
-                <input placeholder="Location" type="text"></input>
-                <input placeholder="Graduation Date" type="text"></input>
+                <input name="university" placeholder="University Name" type="text"></input>
+                <input name="degree" placeholder="Degree" type="text"></input>
+                <input name="gpa" placeholder="GPA" type="number" step="0.1" max="4.0"></input>
+                <input name="location" placeholder="Location" type="text"></input>
+                <input name="graduationDate" placeholder="Graduation Date" type="text"></input>
                 <button> Delete </button>
             </div>
         )
@@ -93,16 +93,15 @@ class Education extends Component {
 class Experience extends Component {
     constructor(props){
         super(props);
-        this.state = {};
     }
     render (){
         return (
             <div>
-                <input placeholder="Company" type="text"></input>
-                <input placeholder="Position" type="text"></input>
-                <input placeholder="Location" type="text"></input>
-                <input placeholder="From" type="text"></input>
-                <input placeholder="To" type="text"></input>
+                <input name="company" placeholder="Company" type="text"></input>
+                <input name="position" placeholder="Position" type="text"></input>
+                <input name="location" placeholder="Location" type="text"></input>
+                <input name="from" placeholder="From" type="text"></input>
+                <input name="to" placeholder="To" type="text"></input>
                 <button>Delete</button>
             </div>
         )
@@ -112,18 +111,17 @@ class Experience extends Component {
 class Skill extends Component {
     constructor(props){
         super(props);
-        this.state = {};
     }
     render (){
         return (
             <div>
                 <select>
-                    <option value="operatingSystems">Operating Systems</option>
-                    <option value="languages">Languages</option>
-                    <option value="frameworks">Frameworks</option>
-                    <option value="libraries">Libraries</option>
-                    <option value="databases">Databases</option>
-                    <option value="other">Other</option>
+                    <option name="type" value="operatingSystems">Operating Systems</option>
+                    <option name="type" value="languages">Languages</option>
+                    <option name="type" value="frameworks">Frameworks</option>
+                    <option name="type" value="libraries">Libraries</option>
+                    <option name="type" value="databases">Databases</option>
+                    <option name="type" value="other">Other</option>
                 </select>
                 <input placeholder="Type here"></input>
             </div>
@@ -134,15 +132,14 @@ class Skill extends Component {
 
 class Project extends Component {
     constructor(props){
-        super(props)
-        this.state = {};
+        super(props);
     } 
     render(){
         return (
             <div>
-                <input type="text" placeholder="Project Name"></input>
-                <input placeholder="link" type="link"></input>
-                <input type="textarea" placeholder="Description"></input>
+                <input name="projectName" placeholder="Project Name" type="text"></input>
+                <input name="link" placeholder="link" type="link"></input>
+                <input name="description" placeholder="Description" type="textarea"></input>
                 <button>Delete</button>
             </div>
         )

@@ -12,21 +12,23 @@ class Main extends Component {
         this.handlePhoneChange = this.handlePhoneChange.bind(this);
         this.handleGoalChange = this.handleGoalChange.bind(this);
         this.state = {
-            firstName: "",
-            lastname: "",
-            email: "", 
-            address: "", 
-            phone: "",
-            goal: "",
-            experiece: [],
-            education: [],
-            skills: [],
-            projects: [],
+            personalInformation: {
+                firstName: "",
+                lastname: "",
+                email: "", 
+                address: "", 
+                phone: "",
+                goal: "",
+            },
+            experiece: [{ company: "", position: "", location: "", from: "", to: ""},],
+            education: [{university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
+            skills: [{type: "", description:""}],
+            projects: [{projectName: "", link: "", description: ""}],
         };
     }
 
     handlefirstNameChange(firstName){
-        this.setState({firstName});
+        this.setState({id});
     }
 
     handleSecondNameChange(lastname){
@@ -47,6 +49,10 @@ class Main extends Component {
 
     handleGoalChange(goal){
         this.setState({goal});
+    }
+
+    handleAddExperience(experience){
+
     }
 
     render(){

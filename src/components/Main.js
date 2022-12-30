@@ -5,16 +5,11 @@ import Form from "./Form";
 class Main extends Component {
     constructor(props){
         super(props);
-        this.handlefirstNameChange = this.handlefirstNameChange.bind(this);
-        this.handleSecondNameChange = this.handleSecondNameChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handleAddressChange = this.handleAddressChange.bind(this);
-        this.handlePhoneChange = this.handlePhoneChange.bind(this);
-        this.handleGoalChange = this.handleGoalChange.bind(this);
+        this.handlePersonalChange = this.handlePersonalChange.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
-                lastname: "",
+                lastName: "",
                 email: "", 
                 address: "", 
                 phone: "",
@@ -27,44 +22,22 @@ class Main extends Component {
         };
     }
 
-    handlefirstNameChange(firstName){
-        this.setState({id});
-    }
-
-    handleSecondNameChange(lastname){
-        this.setState({lastname});
-    }
-
-    handleEmailChange(email){
-        this.setState({email});
-    }
-
-    handleAddressChange(address){
-        this.setState({address});
-    }
-
-    handlePhoneChange(phone){
-        this.setState({phone});
-    }
-
-    handleGoalChange(goal){
-        this.setState({goal});
-    }
-
-    handleAddExperience(experience){
-
+    handlePersonalChange(e){
+        const {name, value} = e.target;
+        this.setState((previousState) => ({
+        ...previousState,
+        personalInformation: {
+            ...previousState.personalInformation,
+            [name]: value
+        }
+       }))
     }
 
     render(){
         return (
             <main>
                 <Form 
-                    onFirstNameChange={this.handlefirstNameChange}
-                    onSecondNameChange={this.handleSecondNameChange}
-                    onEmailChange={this.handleEmailChange}
-                    onAddressChange={this.handleAddressChange}
-                    onPhoneChange={this.handlePhoneChange}
-                    onGoalChange={this.handleGoalChange}
+                    onPersonalChange={this.handlePersonalChange}
                 />
             </main>
         )

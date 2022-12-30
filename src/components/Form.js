@@ -3,36 +3,6 @@ import  {Component} from "react";
 class Form extends Component {
     constructor(props){
         super(props);
-        this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-        this.handleSecondNameChange = this.handleSecondNameChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handleAddressChange = this.handleAddressChange.bind(this);
-        this.handlePhoneChange = this.handlePhoneChange.bind(this);
-        this.handleGoalChange = this.handleGoalChange.bind(this);
-    }
-
-    handleFirstNameChange(e){
-        this.props.onFirstNameChange(e.target.value);
-    }
-
-    handleSecondNameChange(e){
-        this.props.onSecondNameChange(e.target.value);
-    }
-
-    handleEmailChange(e){
-        this.props.onEmailChange(e.target.value);
-    }
-
-    handleAddressChange(e){
-        this.props.onAddressChange(e.target.value);
-    }
-
-    handlePhoneChange(e){
-        this.props.onPhoneChange(e.target.value);
-    }
-
-    handleGoalChange(e){
-        this.props.onGoalChange(e.target.value);
     }
 
     render (){
@@ -40,12 +10,12 @@ class Form extends Component {
             <form>
                 <section>
                     <h3>Personal Information</h3>
-                    <input name="firstName" placeholder="First Name" type="text" onChange={this.handleFirstNameChange}></input>
-                    <input name="lastName" placeholder="Last Name" type="text" onChange={this.handleSecondNameChange}></input>
-                    <input name="email" placeholder="Email" type="email" onChange={this.handleEmailChange}></input>
-                    <input name="phone" placeholder="Phone Number" type="tel" onChange={this.handlePhoneChange}></input>
-                    <input name="address" placeholder="Address" type="text"></input>
-                    <input name="goal" placeholder="Goal" onChange={this.handleGoalChange}></input>
+                    <input name="firstName" placeholder="First Name" type="text" onChange={this.props.onPersonalChange}></input>
+                    <input name="lastName" placeholder="Last Name" type="text" onChange={this.props.onPersonalChange}></input>
+                    <input name="email" placeholder="Email" type="email" onChange={this.props.onPersonalChange}></input>
+                    <input name="phone" placeholder="Phone Number" type="tel" onChange={this.props.onPersonalChange}></input>
+                    <input name="address" placeholder="Address" type="text" onChange={this.props.onPersonalChange}></input>
+                    <input name="goal" placeholder="Goal" onChange={this.props.onPersonalChange}></input>
                 </section>
                 <section>
                     <h3>Education</h3> 

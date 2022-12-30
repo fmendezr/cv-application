@@ -26,6 +26,7 @@ class Form extends Component {
                     experienceItems={this.props.experience}
                     onExperienceChange={this.props.onExperienceChange}
                     onExperienceDelete={this.props.onExperienceDelete}
+                    onExperienceAdd={this.props.onExperienceAdd}
                  />
                 <section>
                     <h3>Skills</h3>
@@ -78,7 +79,7 @@ class ExperienceSection extends Component {
                     key={experienceItem.id}
                  />)
                 })}
-                <button>Add</button>
+                <button onClick={this.props.onExperienceAdd}>Add</button>
             </section>
         )
      }

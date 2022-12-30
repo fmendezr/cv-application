@@ -60,14 +60,14 @@ class Main extends Component {
         })
     }
 
-  handleExperienceAdd(e){
-    e.preventDefault();
-    this.setState((previousState) => ({
-        ...previousState, 
-        experiece: previousState.experiece.concat([{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""}])
-    }))
-  }
-
+    handleExperienceAdd(e){
+      e.preventDefault();
+      this.setState((previousState) => ({
+          ...previousState, 
+          experiece: previousState.experiece.concat([{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""}])
+      }))
+    }
+  
     render(){
         return (
             <main>

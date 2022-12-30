@@ -11,6 +11,7 @@ class Main extends Component {
         this.handlePersonalChange = this.handlePersonalChange.bind(this);
         this.handleExperienceChange = this.handleExperienceChange.bind(this);
         this.handleExperienceDelete = this.handleExperienceDelete.bind(this);
+        this.handleExperienceAdd = this.handleExperienceAdd.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -53,12 +54,19 @@ class Main extends Component {
 
     handleExperienceDelete(e){
         e.preventDefault();
-        const id = e.target;
         this.setState((previousState) => {
-            const newExperience = previousState.experiece.filter((experieceItem) => experieceItem.id == id)
-            return {...previousState, experiece: newExperience}
+        const newExperience = previousState.experiece.filter((experieceItem) => experieceItem.id != e.target.id)
+            return {...previousState, experiece: [...newExperience]}
         })
     }
+
+  handleExperienceAdd(e){
+    e.preventDefault();
+    this.setState((previousState) => ({
+        ...previousState, 
+        experiece: previousState.experiece.concat([{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""}])
+    }))
+  }
 
     render(){
         return (
@@ -68,6 +76,7 @@ class Main extends Component {
                     experience={this.state.experiece}
                     onExperienceChange={this.handleExperienceChange}
                     onExperienceDelete={this.handleExperienceDelete}
+                    onExperienceAdd={this.handleExperienceAdd}
                 />
             </main>
         )

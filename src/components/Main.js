@@ -9,6 +9,7 @@ class Main extends Component {
     constructor(props){
         super(props);
         this.handlePersonalChange = this.handlePersonalChange.bind(this);
+        this.handleExperienceChange = this.handleExperienceChange.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -18,7 +19,7 @@ class Main extends Component {
                 phone: "",
                 goal: "",
             },
-            experiece: [{id: generateRandomID(), company: "Amazon", position: "", location: "", from: "", to: ""},],
+            experiece: [{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""},],
             education: [{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
             skills: [{id: generateRandomID(), type: "", description:""}],
             projects: [{id: generateRandomID(), projectName: "", link: "", description: ""}],
@@ -36,12 +37,26 @@ class Main extends Component {
        }))
     }
 
+    handleExperienceChange(e){
+        const {name, value, id} = e.target;
+        this.setState((previousState) => {
+           const newExperience = previousState.experiece.map((experieceItem) => {
+            if(experieceItem.id == id){
+                return {...experieceItem, [name]: value}
+            }
+            return experieceItem
+           })
+           return {...previousState, experiece: newExperience}
+        })
+    }
+
     render(){
         return (
             <main>
                 <Form 
                     onPersonalChange={this.handlePersonalChange}
                     experience={this.state.experiece}
+                    onExperienceChange={this.handleExperienceChange}
                 />
             </main>
         )

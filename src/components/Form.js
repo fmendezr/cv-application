@@ -24,6 +24,7 @@ class Form extends Component {
                 </section>
                 <ExperienceSection 
                     experienceItems={this.props.experience}
+                    onExperienceChange={this.props.onExperienceChange}
                  />
                 <section>
                     <h3>Skills</h3>
@@ -62,7 +63,7 @@ class ExperienceSection extends Component {
     constructor(props){
         super(props);
     }
-    
+
      render(){
         return (
             <section>
@@ -70,6 +71,7 @@ class ExperienceSection extends Component {
                 {this.props.experienceItems.map((experienceItem) => {
                     return (<ExperienceItem
                     experienceItem={experienceItem}
+                    onExperienceChange={this.props.onExperienceChange}
                     id={experienceItem.id}
                     key={experienceItem.id}
                  />)
@@ -87,11 +89,11 @@ class ExperienceItem extends Component {
     render (){
         return (
             <div>
-                <input id={this.props.id} name="company" type="text" placeholder="Company" value={this.props.experienceItem.company}></input>
-                <input id= {this.props.id} name="position" type="text" placeholder="Position" value={this.props.experienceItem.position} ></input>
-                <input id={this.props.id} name="location" type="text" placeholder="Location" value={this.props.experienceItem.location}></input>
-                <input id={this.props.id} name="from" type="text" placeholder="From" value={this.props.experienceItem.from}></input>
-                <input id={this.props.id} name="to" type="text" placeholder="To" value={this.props.experienceItem.to}></input>
+                <input id={this.props.id} name="company" type="text" placeholder="Company" value={this.props.experienceItem.company} onChange={this.props.onExperienceChange}></input>
+                <input id= {this.props.id} name="position" type="text" placeholder="Position" value={this.props.experienceItem.position} onChange={this.props.onExperienceChange}></input>
+                <input id={this.props.id} name="location" type="text" placeholder="Location" value={this.props.experienceItem.location} onChange={this.props.onExperienceChange}></input>
+                <input id={this.props.id} name="from" type="text" placeholder="From" value={this.props.experienceItem.from} onChange={this.props.onExperienceChange}></input>
+                <input id={this.props.id} name="to" type="text" placeholder="To" value={this.props.experienceItem.to} onChange={this.props.onExperienceChange}></input>
                 <button>Delete</button>
             </div>
         )

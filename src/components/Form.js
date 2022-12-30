@@ -22,11 +22,9 @@ class Form extends Component {
                     <Education />
                     <button> Add </button>
                 </section>
-                <section>
-                    <h3>Experience</h3>
-                    <Experience/>
-                    <button> Add </button>
-                </section>
+                <ExperienceSection 
+                    experienceItems={this.props.experience}
+                 />
                 <section>
                     <h3>Skills</h3>
                     <Skill />
@@ -60,18 +58,40 @@ class Education extends Component {
     }
 }
 
-class Experience extends Component {
+class ExperienceSection extends Component {
+    constructor(props){
+        super(props);
+    }
+    
+     render(){
+        return (
+            <section>
+                <h3>Experience</h3>
+                {this.props.experienceItems.map((experienceItem) => {
+                    return (<ExperienceItem
+                    experienceItem={experienceItem}
+                    id={experienceItem.id}
+                    key={experienceItem.id}
+                 />)
+                })}
+                <button>Add</button>
+            </section>
+        )
+     }
+}
+
+class ExperienceItem extends Component {
     constructor(props){
         super(props);
     }
     render (){
         return (
             <div>
-                <input name="company" placeholder="Company" type="text"></input>
-                <input name="position" placeholder="Position" type="text"></input>
-                <input name="location" placeholder="Location" type="text"></input>
-                <input name="from" placeholder="From" type="text"></input>
-                <input name="to" placeholder="To" type="text"></input>
+                <input id={this.props.id} name="company" type="text" placeholder="Company" value={this.props.experienceItem.company}></input>
+                <input id= {this.props.id} name="position" type="text" placeholder="Position" value={this.props.experienceItem.position} ></input>
+                <input id={this.props.id} name="location" type="text" placeholder="Location" value={this.props.experienceItem.location}></input>
+                <input id={this.props.id} name="from" type="text" placeholder="From" value={this.props.experienceItem.from}></input>
+                <input id={this.props.id} name="to" type="text" placeholder="To" value={this.props.experienceItem.to}></input>
                 <button>Delete</button>
             </div>
         )

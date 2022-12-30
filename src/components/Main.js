@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import Form from "./Form";
 
+const generateRandomID = () => {
+    return Math.floor(Math.random() * 10**15)
+}
 
 class Main extends Component {
     constructor(props){
@@ -15,10 +18,10 @@ class Main extends Component {
                 phone: "",
                 goal: "",
             },
-            experiece: [{ company: "", position: "", location: "", from: "", to: ""},],
-            education: [{university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
-            skills: [{type: "", description:""}],
-            projects: [{projectName: "", link: "", description: ""}],
+            experiece: [{id: generateRandomID(), company: "Amazon", position: "", location: "", from: "", to: ""},],
+            education: [{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
+            skills: [{id: generateRandomID(), type: "", description:""}],
+            projects: [{id: generateRandomID(), projectName: "", link: "", description: ""}],
         };
     }
 
@@ -38,6 +41,7 @@ class Main extends Component {
             <main>
                 <Form 
                     onPersonalChange={this.handlePersonalChange}
+                    experience={this.state.experiece}
                 />
             </main>
         )

@@ -10,6 +10,7 @@ class Main extends Component {
         super(props);
         this.handlePersonalChange = this.handlePersonalChange.bind(this);
         this.handleExperienceChange = this.handleExperienceChange.bind(this);
+        this.handleExperienceDelete = this.handleExperienceDelete.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -41,12 +42,21 @@ class Main extends Component {
         const {name, value, id} = e.target;
         this.setState((previousState) => {
            const newExperience = previousState.experiece.map((experieceItem) => {
-            if(experieceItem.id == id){
-                return {...experieceItem, [name]: value}
+                if(experieceItem.id == id){
+                    return {...experieceItem, [name]: value}
             }
             return experieceItem
            })
            return {...previousState, experiece: newExperience}
+        })
+    }
+
+    handleExperienceDelete(e){
+        e.preventDefault();
+        const id = e.target;
+        this.setState((previousState) => {
+            const newExperience = previousState.experiece.filter((experieceItem) => experieceItem.id == id)
+            return {...previousState, experiece: newExperience}
         })
     }
 
@@ -57,6 +67,7 @@ class Main extends Component {
                     onPersonalChange={this.handlePersonalChange}
                     experience={this.state.experiece}
                     onExperienceChange={this.handleExperienceChange}
+                    onExperienceDelete={this.handleExperienceDelete}
                 />
             </main>
         )

@@ -17,11 +17,10 @@ class Form extends Component {
                     <input name="address" placeholder="Address" type="text" onChange={this.props.onPersonalChange}></input>
                     <input name="goal" placeholder="Goal" onChange={this.props.onPersonalChange}></input>
                 </section>
-                <section>
-                    <h3>Education</h3> 
-                    <Education />
-                    <button> Add </button>
-                </section>
+                <EducationSection 
+                    educationItems={this.props.education}
+                    onEducationChange={this.props.onEducationChange}
+                />
                 <ExperienceSection 
                     experienceItems={this.props.experience}
                     onExperienceChange={this.props.onExperienceChange}
@@ -43,18 +42,40 @@ class Form extends Component {
     }
 }
 
-class Education extends Component {
+class EducationSection extends Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+            <section>
+                <h3>Education</h3>
+                {this.props.educationItems.map((educationItem) => {
+                    return (<EducationItem 
+                        educationItem={educationItem}
+                        onEducationChange={this.props.onEducationChange}
+                        id={educationItem.id}
+                        key={educationItem.id}
+                    />)
+                })}
+                <button>Add</button>
+            </section>
+        )
+    }
+}
+
+class EducationItem extends Component {
     constructor(props){
         super(props);
     }
     render (){
         return (
             <div>
-                <input name="university" placeholder="University Name" type="text"></input>
-                <input name="degree" placeholder="Degree" type="text"></input>
-                <input name="gpa" placeholder="GPA" type="number" step="0.1" max="4.0"></input>
-                <input name="location" placeholder="Location" type="text"></input>
-                <input name="graduationDate" placeholder="Graduation Date" type="text"></input>
+                <input id={this.props.id} name="university" type="text" placeholder="University Name" value={this.props.educationItem.university} onChange={this.props.onEducationChange}></input>
+                <input id={this.props.id} name="degree" type="text" placeholder="Degree" value={this.props.educationItem.degree} onChange={this.props.onEducationChange}></input>
+                <input id={this.props.id} name="gpa" type="text" step="0.1" max="4.0" placeholder="GPA" value={this.props.educationItem.gpa} onChange={this.props.onEducationChange}></input>
+                <input id={this.props.id} name="location" type="text" placeholder="Location" value={this.props.educationItem.location} onChange={this.props.onEducationChange}></input>
+                <input id={this.props.id} name="graduationDate" type="text" placeholder="Graduation Date" value={this.props.educationItem.graduationDate} onChange={this.props.onEducationChange}></input>
                 <button> Delete </button>
             </div>
         )

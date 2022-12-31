@@ -12,6 +12,7 @@ class Main extends Component {
         this.handleExperienceChange = this.handleExperienceChange.bind(this);
         this.handleExperienceDelete = this.handleExperienceDelete.bind(this);
         this.handleExperienceAdd = this.handleExperienceAdd.bind(this);
+        this.handleEducationChange = this.handleEducationChange.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -37,6 +38,19 @@ class Main extends Component {
             [name]: value
         }
        }))
+    }
+
+    handleEducationChange(e){
+        const {name, value, id} = e.target;
+        this.setState((previousState) => {
+            const newEducation = previousState.education.map((educationItem) => {
+                if(educationItem.id == id){
+                    return {...educationItem, [name]: value}
+                }
+                return educationItem
+            })
+            return {...previousState, education: newEducation}
+        })
     }
 
     handleExperienceChange(e){
@@ -77,6 +91,8 @@ class Main extends Component {
                     onExperienceChange={this.handleExperienceChange}
                     onExperienceDelete={this.handleExperienceDelete}
                     onExperienceAdd={this.handleExperienceAdd}
+                    education={this.state.education}
+                    onEducationChange={this.handleEducationChange}
                 />
             </main>
         )

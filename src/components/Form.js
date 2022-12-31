@@ -38,6 +38,7 @@ class Form extends Component {
                 <ProjectsSection
                     projectsItems={this.props.projects}
                     onProjectsChange={this.props.onProjectsChange}
+                    onProjectDelete={this.props.onProjectDelete}
                 />
             </form>
         )
@@ -183,6 +184,7 @@ class ProjectsSection extends Component {
                     return (<ProjectsItem 
                         projectsItem={projectsItem}
                         onProjectsChange={this.props.onProjectsChange}
+                        onProjectDelete={this.props.onProjectDelete}
                         id={projectsItem.id}
                         key={projectsItem.id}
                     />)
@@ -203,7 +205,7 @@ class ProjectsItem extends Component {
                 <input id={this.props.id} name="projectName" type="text" placeholder="Project Name" value={this.props.projectsItem.projectName} onChange={this.props.onProjectsChange}></input>
                 <input id={this.props.id} name="link" type="link;." placeholder="link" value={this.props.projectsItem.link} onChange={this.props.onProjectsChange}></input>
                 <input id={this.props.id} name="description" type="textarea" placeholder="Description" value={this.props.projectsItem.description} onChange={this.props.onProjectsChange}></input>
-                <button id={this.props.id}>Delete</button>
+                <button id={this.props.id} onClick={this.props.onProjectDelete}>Delete</button>
             </div>
         )
     }

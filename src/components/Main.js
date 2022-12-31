@@ -15,6 +15,7 @@ class Main extends Component {
         this.handleEducationChange = this.handleEducationChange.bind(this);
         this.handleEducationDelete = this.handleEducationDelete.bind(this);
         this.handleEducationAdd = this.handleEducationAdd.bind(this);
+        this.handleSkillsChange = this.handleSkillsChange.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -26,7 +27,7 @@ class Main extends Component {
             },
             experiece: [{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""},],
             education: [{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
-            skills: [{id: generateRandomID(), type: "", description:""}],
+            skills: [{id: generateRandomID(), type: "Databases", description:""}],
             projects: [{id: generateRandomID(), projectName: "", link: "", description: ""}],
         };
     }
@@ -100,6 +101,19 @@ class Main extends Component {
           experiece: previousState.experiece.concat([{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""}])
       }))
     }
+
+    handleSkillsChange(e){
+        const {name, value, id } = e.target;
+        this.setState((previousState) => {
+            const newSkills = previousState.skills.map((skillsItems) => {
+                if(skillsItems.id == id){
+                    return {...skillsItems, [name]: value}
+                }
+                return skillsItems;
+            })
+           return {...previousState, skills: newSkills}
+        })
+    }   
   
     render(){
         return (
@@ -114,7 +128,10 @@ class Main extends Component {
                     onEducationChange={this.handleEducationChange}
                     onEducationDelete={this.handleEducationDelete}
                     onEducationAdd={this.handleEducationAdd}
+                    skills={this.state.skills}
+                    onSkillsChange={this.handleSkillsChange}
                 />
+                <h1>{this.state.skills[0].description}</h1>
             </main>
         )
     }

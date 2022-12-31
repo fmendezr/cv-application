@@ -18,6 +18,7 @@ class Main extends Component {
         this.handleSkillsChange = this.handleSkillsChange.bind(this);
         this.handleSkillsDelete = this.handleSkillsDelete.bind(this);
         this.handleProjectsChange = this.handleProjectsChange.bind(this);
+        this.handleSkillsAdd = this.handleSkillsAdd.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -125,6 +126,14 @@ class Main extends Component {
         })
     }
 
+    handleSkillsAdd(e){
+        e.preventDefault();
+        this.setState((previousState) => {
+            return {...previousState, 
+                skills: previousState.skills.concat([{id: generateRandomID(), type: "Databases", description:""}])}
+        })
+    }
+
     handleProjectsChange(e){
         const {name, value, id} = e.target
         this.setState((previousState) => {
@@ -154,6 +163,7 @@ class Main extends Component {
                     skills={this.state.skills}
                     onSkillsChange={this.handleSkillsChange}
                     onSkillsDelete={this.handleSkillsDelete}
+                    onSkillsAdd={this.handleSkillsAdd}
                     projects={this.state.projects}
                     onProjectsChange={this.handleProjectsChange}
                 />

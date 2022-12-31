@@ -33,6 +33,7 @@ class Form extends Component {
                     skillsItems={this.props.skills}
                     onSkillsChange={this.props.onSkillsChange}
                     onSkillsDelete={this.props.onSkillsDelete}
+                    onSkillsAdd={this.props.onSkillsAdd}
                 />
                 <ProjectsSection
                     projectsItems={this.props.projects}
@@ -143,7 +144,7 @@ class SkillsSection extends Component {
                     key={skillsItem.id}
                 />)
             })}
-            <button>Add</button>        
+            <button onClick={this.props.onSkillsAdd}>Add</button>        
         </section>)
     }
 }

@@ -14,6 +14,7 @@ class Main extends Component {
         this.handleExperienceAdd = this.handleExperienceAdd.bind(this);
         this.handleEducationChange = this.handleEducationChange.bind(this);
         this.handleEducationDelete = this.handleEducationDelete.bind(this);
+        this.handleEducationAdd = this.handleEducationAdd.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -62,6 +63,15 @@ class Main extends Component {
         })
     }
 
+    handleEducationAdd(e){
+        e.preventDefault();
+        this.setState((previousState) => {
+            return {
+                ...previousState, 
+                education: previousState.education.concat([{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}])}
+        })
+    }
+
     handleExperienceChange(e){
         const {name, value, id} = e.target;
         this.setState((previousState) => {
@@ -103,6 +113,7 @@ class Main extends Component {
                     education={this.state.education}
                     onEducationChange={this.handleEducationChange}
                     onEducationDelete={this.handleEducationDelete}
+                    onEducationAdd={this.handleEducationAdd}
                 />
             </main>
         )

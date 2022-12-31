@@ -34,11 +34,10 @@ class Form extends Component {
                     onSkillsChange={this.props.onSkillsChange}
                     onSkillsDelete={this.props.onSkillsDelete}
                 />
-                <section>
-                    <h3>Notable Projects</h3>
-                    <Project />
-                    <button> Add </button>
-                </section>
+                <ProjectsSection
+                    projectsItems={this.props.projects}
+                    onProjectsChange={this.props.onProjectsChange}
+                />
             </form>
         )
     }
@@ -171,18 +170,39 @@ class SkillsItem extends Component {
     }
 }
 
+class ProjectsSection extends Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <section>
+                <h3>Projects</h3>
+                {this.props.projectsItems.map((projectsItem) => {
+                    return (<ProjectsItem 
+                        projectsItem={projectsItem}
+                        onProjectsChange={this.props.onProjectsChange}
+                        id={projectsItem.id}
+                        key={projectsItem.id}
+                    />)
+                })}
+                <button>Add</button>
+            </section>
+        )
+    }
+}
 
-class Project extends Component {
+class ProjectsItem extends Component {
     constructor(props){
         super(props);
     } 
     render(){
         return (
             <div>
-                <input name="projectName" placeholder="Project Name" type="text"></input>
-                <input name="link" placeholder="link" type="link"></input>
-                <input name="description" placeholder="Description" type="textarea"></input>
-                <button>Delete</button>
+                <input id={this.props.id} name="projectName" type="text" placeholder="Project Name" value={this.props.projectsItem.projectName} onChange={this.props.onProjectsChange}></input>
+                <input id={this.props.id} name="link" type="link;." placeholder="link" value={this.props.projectsItem.link} onChange={this.props.onProjectsChange}></input>
+                <input id={this.props.id} name="description" type="textarea" placeholder="Description" value={this.props.projectsItem.description} onChange={this.props.onProjectsChange}></input>
+                <button id={this.props.id}>Delete</button>
             </div>
         )
     }

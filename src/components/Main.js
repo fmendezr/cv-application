@@ -15,8 +15,9 @@ class Main extends Component {
         this.handleEducationChange = this.handleEducationChange.bind(this);
         this.handleEducationDelete = this.handleEducationDelete.bind(this);
         this.handleEducationAdd = this.handleEducationAdd.bind(this);
-        this.handleSkillsChange = this.handleSkillsChange.bind(this);;
+        this.handleSkillsChange = this.handleSkillsChange.bind(this);
         this.handleSkillsDelete = this.handleSkillsDelete.bind(this);
+        this.handleProjectsChange = this.handleProjectsChange.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -124,6 +125,18 @@ class Main extends Component {
         })
     }
 
+    handleProjectsChange(e){
+        const {name, value, id} = e.target
+        this.setState((previousState) => {
+            const newProjects = previousState.projects.map((projectsItem) => {
+                if(projectsItem.id == id){
+                    return {...projectsItem, [name]: value }
+                } 
+                return projectsItem
+            })
+            return {...previousState, projects: newProjects}
+        })
+    }
   
     render(){
         return (
@@ -141,6 +154,8 @@ class Main extends Component {
                     skills={this.state.skills}
                     onSkillsChange={this.handleSkillsChange}
                     onSkillsDelete={this.handleSkillsDelete}
+                    projects={this.state.projects}
+                    onProjectsChange={this.handleProjectsChange}
                 />
             </main>
         )

@@ -32,6 +32,7 @@ class Form extends Component {
                 <SkillsSection 
                     skillsItems={this.props.skills}
                     onSkillsChange={this.props.onSkillsChange}
+                    onSkillsDelete={this.props.onSkillsDelete}
                 />
                 <section>
                     <h3>Notable Projects</h3>
@@ -138,6 +139,7 @@ class SkillsSection extends Component {
                 return (<SkillsItem 
                     skillsItem={skillsItem}
                     onSkillsChange={this.props.onSkillsChange}
+                    onSkillsDelete={this.props.onSkillsDelete}
                     id={skillsItem.id}
                     key={skillsItem.id}
                 />)
@@ -163,7 +165,7 @@ class SkillsItem extends Component {
                     <option id={this.props.id} name="type" value="Other">Other</option>
                 </select>
                 <input id={this.props.id} name="description" placeholder="Specify here" value={this.props.skillsItem.description} onChange={this.props.onSkillsChange}></input>
-                <button id={this.props.id}>Delete</button>
+                <button id={this.props.id} onClick={this.props.onSkillsDelete}>Delete</button>
             </div>
         )
     }

@@ -15,7 +15,8 @@ class Main extends Component {
         this.handleEducationChange = this.handleEducationChange.bind(this);
         this.handleEducationDelete = this.handleEducationDelete.bind(this);
         this.handleEducationAdd = this.handleEducationAdd.bind(this);
-        this.handleSkillsChange = this.handleSkillsChange.bind(this);
+        this.handleSkillsChange = this.handleSkillsChange.bind(this);;
+        this.handleSkillsDelete = this.handleSkillsDelete.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -114,6 +115,15 @@ class Main extends Component {
            return {...previousState, skills: newSkills}
         })
     }   
+
+    handleSkillsDelete(e){
+        e.preventDefault();
+        this.setState((previousState) => {
+            const newSkills = previousState.skills.filter((skillsItem) => skillsItem.id != e.target.id )
+            return {...previousState, skills: [...newSkills]}
+        })
+    }
+
   
     render(){
         return (
@@ -130,8 +140,8 @@ class Main extends Component {
                     onEducationAdd={this.handleEducationAdd}
                     skills={this.state.skills}
                     onSkillsChange={this.handleSkillsChange}
+                    onSkillsDelete={this.handleSkillsDelete}
                 />
-                <h1>{this.state.skills[0].description}</h1>
             </main>
         )
     }

@@ -13,6 +13,7 @@ class Main extends Component {
         this.handleExperienceDelete = this.handleExperienceDelete.bind(this);
         this.handleExperienceAdd = this.handleExperienceAdd.bind(this);
         this.handleEducationChange = this.handleEducationChange.bind(this);
+        this.handleEducationDelete = this.handleEducationDelete.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -53,6 +54,14 @@ class Main extends Component {
         })
     }
 
+    handleEducationDelete(e){
+        e.preventDefault();
+        this.setState((previousState) => {
+            const newEducation = previousState.education.filter((educationItem) => educationItem.id != e.target.id)
+            return {...previousState, education: [...newEducation]}
+        })
+    }
+
     handleExperienceChange(e){
         const {name, value, id} = e.target;
         this.setState((previousState) => {
@@ -69,7 +78,7 @@ class Main extends Component {
     handleExperienceDelete(e){
         e.preventDefault();
         this.setState((previousState) => {
-        const newExperience = previousState.experiece.filter((experieceItem) => experieceItem.id != e.target.id)
+            const newExperience = previousState.experiece.filter((experieceItem) => experieceItem.id != e.target.id)
             return {...previousState, experiece: [...newExperience]}
         })
     }
@@ -93,6 +102,7 @@ class Main extends Component {
                     onExperienceAdd={this.handleExperienceAdd}
                     education={this.state.education}
                     onEducationChange={this.handleEducationChange}
+                    onEducationDelete={this.handleEducationDelete}
                 />
             </main>
         )

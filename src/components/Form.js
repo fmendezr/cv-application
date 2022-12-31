@@ -20,6 +20,7 @@ class Form extends Component {
                 <EducationSection 
                     educationItems={this.props.education}
                     onEducationChange={this.props.onEducationChange}
+                    onEducationDelete={this.props.onEducationDelete}
                 />
                 <ExperienceSection 
                     experienceItems={this.props.experience}
@@ -54,6 +55,7 @@ class EducationSection extends Component {
                     return (<EducationItem 
                         educationItem={educationItem}
                         onEducationChange={this.props.onEducationChange}
+                        onEducationDelete={this.props.onEducationDelete}
                         id={educationItem.id}
                         key={educationItem.id}
                     />)
@@ -76,7 +78,7 @@ class EducationItem extends Component {
                 <input id={this.props.id} name="gpa" type="text" step="0.1" max="4.0" placeholder="GPA" value={this.props.educationItem.gpa} onChange={this.props.onEducationChange}></input>
                 <input id={this.props.id} name="location" type="text" placeholder="Location" value={this.props.educationItem.location} onChange={this.props.onEducationChange}></input>
                 <input id={this.props.id} name="graduationDate" type="text" placeholder="Graduation Date" value={this.props.educationItem.graduationDate} onChange={this.props.onEducationChange}></input>
-                <button> Delete </button>
+                <button id={this.props.id} onClick={this.props.onEducationDelete}> Delete </button>
             </div>
         )
     }

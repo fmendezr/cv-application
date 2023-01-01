@@ -39,6 +39,7 @@ class Form extends Component {
                     projectsItems={this.props.projects}
                     onProjectsChange={this.props.onProjectsChange}
                     onProjectDelete={this.props.onProjectDelete}
+                    onProjectAdd={this.props.onProjectAdd}
                 />
             </form>
         )
@@ -189,7 +190,7 @@ class ProjectsSection extends Component {
                         key={projectsItem.id}
                     />)
                 })}
-                <button>Add</button>
+                <button onClick={this.props.onProjectAdd}>Add</button>
             </section>
         )
     }

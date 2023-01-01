@@ -19,7 +19,8 @@ class Main extends Component {
         this.handleSkillsDelete = this.handleSkillsDelete.bind(this);
         this.handleSkillsAdd = this.handleSkillsAdd.bind(this);
         this.handleProjectsChange = this.handleProjectsChange.bind(this);
-        this.handleProjectsDelete = this.handleProjectsDelete.bind(this)
+        this.handleProjectsDelete = this.handleProjectsDelete.bind(this);
+        this.handleProjectsAdd = this.handleProjectsAdd.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -155,6 +156,14 @@ class Main extends Component {
             return {...previousState, projects: newProjects}
         })
     }
+
+    handleProjectsAdd(e){
+        e.preventDefault();
+        this.setState((previousState) => {
+            return {...previousState, 
+            projects: previousState.projects.concat([{id: generateRandomID(), projectName: "", link: "", description: ""}])}
+        })
+    }
   
     render(){
         return (
@@ -176,6 +185,7 @@ class Main extends Component {
                     projects={this.state.projects}
                     onProjectsChange={this.handleProjectsChange}
                     onProjectDelete={this.handleProjectsDelete}
+                    onProjectAdd={this.handleProjectsAdd}
                 />
             </main>
         )

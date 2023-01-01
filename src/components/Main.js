@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Form from "./Form";
+import Form from "./Form/Form.js";
 
 const generateRandomID = () => {
     return Math.floor(Math.random() * 10**15)
@@ -169,6 +169,7 @@ class Main extends Component {
         return (
             <main>
                 <Form 
+                    personalInformation={this.personalInformation}
                     onPersonalChange={this.handlePersonalChange}
                     experience={this.state.experiece}
                     onExperienceChange={this.handleExperienceChange}

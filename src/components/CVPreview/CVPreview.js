@@ -14,7 +14,13 @@ class CV extends Component {
                     phone={this.props.information.personalInformation.phone}
                     email={this.props.information.personalInformation.email}
                 />
-                <></>
+                <Content 
+                    objective={this.props.information.personalInformation.goal}
+                    education={this.props.information.education}
+                    skills={this.props.information.skills}
+                    projects={this.props.information.projects}
+                    experience={this.props.information.experience}
+                />
             </div>
         )
     }
@@ -33,11 +39,21 @@ const Header = (props) => {
 const Content = (props) => {
     return (
         <div>
-            <Objective />
-            <Education />
-            <Skills />
-            <Projects />
-            <Experience />
+            <Objective 
+                objective={this.props.objective}
+            />
+            <Education 
+                education={this.props.education}
+            />
+            <Skills 
+                skills={this.props.skills}
+            />
+            <Projects 
+                projects={this.props.projects}
+            />
+            <Experience
+                experience={this.props.Experience}
+            />
         </div>
     )
 }

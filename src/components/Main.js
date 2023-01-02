@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Form from "./Form/Form.js";
+import CV from "./CVPreview/CVPreview.js";
 
 const generateRandomID = () => {
     return Math.floor(Math.random() * 10**15)
@@ -187,6 +188,9 @@ class Main extends Component {
                     onProjectsChange={this.handleProjectsChange}
                     onProjectDelete={this.handleProjectsDelete}
                     onProjectAdd={this.handleProjectsAdd}
+                />
+                <CV 
+                    information={this.state}
                 />
             </main>
         )

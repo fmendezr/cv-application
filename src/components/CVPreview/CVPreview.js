@@ -48,7 +48,7 @@ const Content = (props) => {
             <SkillsSection 
                 skills={props.skills}
             />
-            <Projects 
+            <ProjectsSection 
                 projects={props.projects}
             />
             <Experience
@@ -130,9 +130,31 @@ const SkillsItem = (props) => {
     )
 }
 
-const Projects = (props) => {
+const ProjectsSection = (props) => {
     return (
-        <div></div>
+        <section>
+            <h3>Key Projects</h3>
+            {props.projects.map((projectsItem) => {
+                return (
+                    <ProjectsItem 
+                        projectName={projectsItem.projectName}
+                        link={projectsItem.link}
+                        description={projectsItem.description}
+                        id={projectsItem.id}
+                        key={projectsItem.id}
+                    />
+                )
+            })}
+        </section>
+    )
+}
+
+const ProjectsItem = (props) => {
+    return (
+        <div>
+            <h5>{props.projectName}</h5>
+            <p>{props.description}</p>
+        </div>
     )
 }
 

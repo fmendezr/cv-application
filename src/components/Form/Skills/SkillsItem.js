@@ -1,27 +1,5 @@
 import { Component } from "react";
 
-class SkillsSection extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return (
-        <section>
-            <h3>Skills</h3>
-            {this.props.skillsItems.map((skillsItem) => {
-                return (<SkillsItem 
-                    skillsItem={skillsItem}
-                    onSkillsChange={this.props.onSkillsChange}
-                    onSkillsDelete={this.props.onSkillsDelete}
-                    id={skillsItem.id}
-                    key={skillsItem.id}
-                />)
-            })}
-            <button onClick={this.props.onSkillsAdd}>Add</button>        
-        </section>)
-    }
-}
-
 class SkillsItem extends Component {
     constructor(props){
         super(props);
@@ -44,4 +22,4 @@ class SkillsItem extends Component {
     }
 }
 
-export default SkillsSection;
+export default SkillsItem;

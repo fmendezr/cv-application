@@ -1,28 +1,5 @@
 import { Component } from "react";
 
-class EducationSection extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
-            <section>
-                <h3>Education</h3>
-                {this.props.educationItems.map((educationItem) => {
-                    return (<EducationItem 
-                        educationItem={educationItem}
-                        onEducationChange={this.props.onEducationChange}
-                        onEducationDelete={this.props.onEducationDelete}
-                        id={educationItem.id}
-                        key={educationItem.id}
-                    />)
-                })}
-                <button onClick={this.props.onEducationAdd}>Add</button>
-            </section>
-        )
-    }
-}
-
 class EducationItem extends Component {
     constructor(props){
         super(props);
@@ -41,4 +18,4 @@ class EducationItem extends Component {
     }
 }
 
-export default EducationSection;
+export default EducationItem;

@@ -1,9 +1,9 @@
 import  {Component} from "react";
 import PersonalInformationSection from "./PersonalInformation";
-import EducationSection from "./Education";
-import ExperienceSection from "./Experience";
-import SkillsSection from "./Skills";
-import ProjectsSection from "./Projects";
+import EducationSection from "./Education/EducationSection";
+import ExperienceSection from "./Experience/ExperienceSection";
+import SkillsSection from "./Skills/SkillsSection";
+import ProjectsSection from "./Projects/ProjectsSection";
 
 class Form extends Component {
     constructor(props){

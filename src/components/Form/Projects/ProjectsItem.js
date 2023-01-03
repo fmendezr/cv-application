@@ -1,27 +1,4 @@
-import { Component } from "react";
-
-class ProjectsSection extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return (
-            <section>
-                <h3>Projects</h3>
-                {this.props.projectsItems.map((projectsItem) => {
-                    return (<ProjectsItem 
-                        projectsItem={projectsItem}
-                        onProjectsChange={this.props.onProjectsChange}
-                        onProjectDelete={this.props.onProjectDelete}
-                        id={projectsItem.id}
-                        key={projectsItem.id}
-                    />)
-                })}
-                <button onClick={this.props.onProjectAdd}>Add</button>
-            </section>
-        )
-    }
-}
+import {Component} from "react";
 
 class ProjectsItem extends Component {
     constructor(props){
@@ -39,4 +16,4 @@ class ProjectsItem extends Component {
     }
 }
 
-export default ProjectsSection;
+export default ProjectsItem;

@@ -39,28 +39,31 @@ const Header = (props) => {
 const Content = (props) => {
     return (
         <div>
-            <Objective 
-                objective={this.props.objective}
+            <ObjectiveSection 
+                objective={props.objective}
             />
             <Education 
-                education={this.props.education}
+                education={props.education}
             />
             <Skills 
-                skills={this.props.skills}
+                skills={props.skills}
             />
             <Projects 
-                projects={this.props.projects}
+                projects={props.projects}
             />
             <Experience
-                experience={this.props.Experience}
+                experience={props.experience}
             />
         </div>
     )
 }
 
-const Objective = (props) => {
+const ObjectiveSection = (props) => {
     return (
-        <div></div>
+        <section>   
+            <h3>Objective</h3>
+            <p>{props.objective}</p>
+        </section>
     )
 }
 

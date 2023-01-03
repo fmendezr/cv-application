@@ -19,7 +19,7 @@ class CV extends Component {
                     education={this.props.information.education}
                     skills={this.props.information.skills}
                     projects={this.props.information.projects}
-                    experience={this.props.information.experience}
+                    experience={this.props.information.experiece}
                 />
             </div>
         )
@@ -51,7 +51,7 @@ const Content = (props) => {
             <ProjectsSection 
                 projects={props.projects}
             />
-            <Experience
+            <ExperienceSection
                 experience={props.experience}
             />
         </div>
@@ -158,9 +158,39 @@ const ProjectsItem = (props) => {
     )
 }
 
-const Experience = (props) => {
+const ExperienceSection = (props) => {
     return (
-        <div></div>
+        <section>
+            <h3>Experience</h3>
+            {props.experience.map((experienceItem) => {
+                return (
+                    <ExperienceItem 
+                        company={experienceItem.company}
+                        position={experienceItem.position}
+                        location={experienceItem.location}
+                        from={experienceItem.from}
+                        to={experienceItem.to}
+                        id={experienceItem.id}
+                        key={experienceItem.key}
+                    />
+                )
+            })}
+        </section>
+    )
+}
+
+const ExperienceItem = (props) => {
+    return(
+        <div>
+            <div>
+                <p>{props.company}</p>
+                <p>{props.position}</p>
+            </div>
+            <div>
+                <p>{props.location}</p>
+                <p>{props.from} - {props.to}</p>
+            </div>
+        </div>
     )
 }
 

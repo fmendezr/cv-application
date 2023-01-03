@@ -42,7 +42,7 @@ const Content = (props) => {
             <ObjectiveSection 
                 objective={props.objective}
             />
-            <Education 
+            <EducationSection
                 education={props.education}
             />
             <Skills 
@@ -67,9 +67,40 @@ const ObjectiveSection = (props) => {
     )
 }
 
-const Education = (props) => {
+const EducationSection = (props) => {
     return (
-        <div></div>
+        <section>
+            <h3>Education</h3>
+            {props.education.map((educationItem) => {
+                return (
+                    <EducationItem 
+                        university={educationItem.university}
+                        degree={educationItem.degree}
+                        gpa={educationItem.gpa}
+                        location={educationItem.location}
+                        graduationDate={educationItem.graduationDate}
+                        id={educationItem.id}
+                        key={educationItem.id}
+                    />
+                )
+            })}
+        </section>
+    )
+}
+
+const EducationItem = (props) => {
+    return (
+        <div>
+            <div>
+                <p>{props.university}</p>
+                <p>{props.degree}</p>
+                <p>GPA: {props.gpa}</p>
+            </div>
+            <div>
+                <p>{props.location}</p>
+                <p>{props.graduationDate}</p>
+            </div>
+        </div>
     )
 }
 

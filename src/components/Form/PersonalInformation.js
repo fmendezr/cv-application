@@ -6,8 +6,8 @@ class PersonalInformationSection extends Component {
     }
     render(){
         return (
-            <section>
-                <h3>Personal Information</h3>
+            <section style={stylingObject.section}>
+                <h3 style={stylingObject.h3}>Personal Information</h3>
                 <input name="firstName" placeholder="First Name" type="text" onChange={this.props.onPersonalChange}></input>
                 <input name="lastName" placeholder="Last Name" type="text" onChange={this.props.onPersonalChange}></input>
                 <input name="email" placeholder="Email" type="email" onChange={this.props.onPersonalChange}></input>
@@ -16,6 +16,20 @@ class PersonalInformationSection extends Component {
                 <input name="goal" placeholder="Goal" onChange={this.props.onPersonalChange}></input>
             </section>
         )
+    }
+}
+
+const stylingObject = {
+    section: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+        marginBottom: "1rem", 
+    },
+    h3: {
+        fontSize: "1.5rem",
+        fontWeight: "bold",
+        color: "#000033"
     }
 }
 

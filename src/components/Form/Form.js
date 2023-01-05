@@ -4,6 +4,7 @@ import EducationSection from "./Education/EducationSection";
 import ExperienceSection from "./Experience/ExperienceSection";
 import SkillsSection from "./Skills/SkillsSection";
 import ProjectsSection from "./Projects/ProjectsSection";
+import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 
 class Form extends Component {
     constructor(props){
@@ -12,7 +13,7 @@ class Form extends Component {
 
     render (){
         return(
-            <form>
+            <form style={stylingObject.form}>
                 <PersonalInformationSection
                     personalInfoItem={this.props.personalInformation} 
                     onPersonalChange={this.props.onPersonalChange}
@@ -43,6 +44,15 @@ class Form extends Component {
                 />
             </form>
         )
+    }
+}
+
+const stylingObject = {
+    form: {
+        width: "600px",
+        display: "flex",
+        flexDirection: "column",
+        padding: "1rem"
     }
 }
 

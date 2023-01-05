@@ -4,7 +4,7 @@ import EducationSection from "./Education/EducationSection";
 import ExperienceSection from "./Experience/ExperienceSection";
 import SkillsSection from "./Skills/SkillsSection";
 import ProjectsSection from "./Projects/ProjectsSection";
-import { faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import ButtonSection from "./ButtonSection";
 
 class Form extends Component {
     constructor(props){
@@ -41,6 +41,9 @@ class Form extends Component {
                     onProjectsChange={this.props.onProjectsChange}
                     onProjectDelete={this.props.onProjectDelete}
                     onProjectAdd={this.props.onProjectAdd}
+                />
+                <ButtonSection 
+                    onReset={this.props.onReset}
                 />
             </form>
         )

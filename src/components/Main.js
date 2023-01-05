@@ -22,6 +22,7 @@ class Main extends Component {
         this.handleProjectsChange = this.handleProjectsChange.bind(this);
         this.handleProjectsDelete = this.handleProjectsDelete.bind(this);
         this.handleProjectsAdd = this.handleProjectsAdd.bind(this);
+        this.handleReset =this.handleReset.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -165,12 +166,23 @@ class Main extends Component {
             projects: previousState.projects.concat([{id: generateRandomID(), projectName: "", link: "", description: ""}])}
         })
     }
+
+    handleReset(e){
+        e.preventDefault();
+        this.setState({
+            personalInformation: {firstName: "", lastName: "", email: "", address: "", phone: "", goal: "",},
+            experiece: [{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""},],
+            education: [{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
+            skills: [{id: generateRandomID(), type: "Databases", description:""}],
+            projects: [{id: generateRandomID(), projectName: "", link: "", description: ""}],
+        })
+    }
   
     render(){
         return (
             <main>
                 <Form 
-                    personalInformation={this.personalInformation}
+                    personalInformation={this.state.personalInformation}
                     onPersonalChange={this.handlePersonalChange}
                     experience={this.state.experiece}
                     onExperienceChange={this.handleExperienceChange}
@@ -188,6 +200,7 @@ class Main extends Component {
                     onProjectsChange={this.handleProjectsChange}
                     onProjectDelete={this.handleProjectsDelete}
                     onProjectAdd={this.handleProjectsAdd}
+                    onReset={this.handleReset}
                 />
                 <CV 
                     information={this.state}

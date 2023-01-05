@@ -8,7 +8,7 @@ class CV extends Component {
     }
     render(){
         return(
-            <div>
+            <div style={stylingObject.div}>
                 <Header 
                     firstName={this.props.information.personalInformation.firstName}
                     lastName={this.props.information.personalInformation.lastName}
@@ -25,6 +25,14 @@ class CV extends Component {
                 />
             </div>
         )
+    }
+}
+
+const stylingObject = {
+    div: {
+        backgroundColor: "white",
+        width: "635px",
+        padding: "6rem 5rem"
     }
 }
 

@@ -44,6 +44,7 @@ class Form extends Component {
                 />
                 <ButtonSection 
                     onReset={this.props.onReset}
+                    onSample={this.props.onSample}
                 />
             </form>
         )

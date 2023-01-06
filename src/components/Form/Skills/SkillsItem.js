@@ -13,6 +13,7 @@ class SkillsItem extends Component {
                     <option id={this.props.id} name="type" value="Languages">Languages</option>
                     <option id={this.props.id} name="type" value="Libraries">Libraries</option>
                     <option id={this.props.id} name="type" value="Operating Systems">Operating Systems</option>
+                    <option id={this.props.id} name="type" value="Platforms">Platforms</option>
                     <option id={this.props.id} name="type" value="Other">Other</option>
                 </select>
                 <input id={this.props.id} name="description" placeholder="Specify here" value={this.props.skillsItem.description} onChange={this.props.onSkillsChange}></input>

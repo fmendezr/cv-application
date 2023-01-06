@@ -8,8 +8,7 @@ class ButtonSection extends Component {
         return (
             <section>
                 <button onClick={this.props.onReset}> Reset</button>
-                <button></button>
-                <button></button>
+                <button onClick={this.props.onSample}> Sample CV</button>
             </section>
         )
     }

@@ -22,7 +22,8 @@ class Main extends Component {
         this.handleProjectsChange = this.handleProjectsChange.bind(this);
         this.handleProjectsDelete = this.handleProjectsDelete.bind(this);
         this.handleProjectsAdd = this.handleProjectsAdd.bind(this);
-        this.handleReset =this.handleReset.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+        this.handleSampleCV = this.handleSampleCV.bind(this);
         this.state = {
             personalInformation: {
                 firstName: "",
@@ -177,6 +178,17 @@ class Main extends Component {
             projects: [{id: generateRandomID(), projectName: "", link: "", description: ""}],
         })
     }
+
+    handleSampleCV(e){
+        e.preventDefault();
+        this.setState({
+            personalInformation: {firstName: "Felix", lastName: "Mendez", email: "mendez.flx@gmail.com", address: "15402 N Campus Mail Ctr, Tampa FL 33602", phone: "786-400-9769", goal: "Get an internship in New York"},
+            experiece: [{id: generateRandomID(), company: "Graziano's Market", position: "Dishwsher", location: "Doral, Fl", from: "July 2021", to: "August 2021"},],
+            education: [{id: generateRandomID(), university: "University of South Florida", degree: "Bachelor of Science in Computer Science", gpa: "4.0", location: "Tampa, Fl", graduationDate: "Expected May 2026"}, {id: generateRandomID(), university: "U.E.P. Academia Washington", degree: "High School Diploma", gpa: "4.12", location: "Caracas, Vzla", graduationDate: "Jul 2023"}],
+            skills: [{id: generateRandomID(), type: "Platforms", description:"Personal Computers and other Apple devices"}, {id: generateRandomID(), type: "Operating Systems", description:"MacOS and Linux (Ubuntu)"}, {id: generateRandomID(), type: "Languages", description: "JavaScript, HTML, CSS, Python"}, {id: generateRandomID(), type: "Libraries", description: "React.js, Pandas, NumPy, Keras "}, {id: generateRandomID(), type: "Frameworks", description: "Bootstrap, Express.js, Django "}, {id: generateRandomID(), type: "Databases", description:"MongoDB and SQL"}],
+            projects: [{id: generateRandomID(), projectName: "Amazon Clone", link: "", description: "User interface that allow s user to login/register, browse through products, filter through products, review products, add them to cart/wish list, edit/delete their accounts. •	Admin dashboard that allows add/list products, update product details, view list of all users that have purchased the product."}, {projectName: "Chatbox", link: "", description: "Using Python, Keras, and OpenCV, we will develop a deep learning model for face mask detection. A Keras-based network architecture is used to train the model."}],
+        })
+    }
   
     render(){
         return (
@@ -201,6 +213,7 @@ class Main extends Component {
                     onProjectDelete={this.handleProjectsDelete}
                     onProjectAdd={this.handleProjectsAdd}
                     onReset={this.handleReset}
+                    onSample={this.handleSampleCV}
                 />
                 <CV 
                     information={this.state}

@@ -1,27 +1,21 @@
-import { Component } from "react";
 import EducationItem from "./EducationItem";
 
-class EducationSection extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
-            <section style={stylingObject.section}>
-                <h3 style={stylingObject.h3}>Education</h3>
-                {this.props.educationItems.map((educationItem) => {
-                    return (<EducationItem 
-                        educationItem={educationItem}
-                        onEducationChange={this.props.onEducationChange}
-                        onEducationDelete={this.props.onEducationDelete}
-                        id={educationItem.id}
-                        key={educationItem.id}
-                    />)
-                })}
-                <button style={stylingObject.btn} onClick={this.props.onEducationAdd}>Add</button>
-            </section>
-        )
-    }
+const EducationSection = (props) => {
+    return(
+        <section style={stylingObject.section}>
+            <h3 style={stylingObject.h3}>Education</h3>
+            {props.educationItems.map((educationItem) => {
+                return (<EducationItem 
+                    educationItem={educationItem}
+                    onEducationChange={props.onEducationChange}
+                    onEducationDelete={props.onEducationDelete}
+                    id={educationItem.id}
+                    key={educationItem.id}
+                />)
+            })}
+            <button style={stylingObject.btn} onClick={props.onEducationAdd}>Add</button>
+        </section>
+    )
 }
 
 const stylingObject = {

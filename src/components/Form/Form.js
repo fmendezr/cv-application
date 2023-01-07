@@ -1,4 +1,3 @@
-import  {Component} from "react";
 import PersonalInformationSection from "./PersonalInformation";
 import EducationSection from "./Education/EducationSection";
 import ExperienceSection from "./Experience/ExperienceSection";
@@ -6,49 +5,43 @@ import SkillsSection from "./Skills/SkillsSection";
 import ProjectsSection from "./Projects/ProjectsSection";
 import ButtonSection from "./ButtonSection";
 
-class Form extends Component {
-    constructor(props){
-        super(props);
-    }
-
-    render (){
-        return(
-            <form style={stylingObject.form}>
-                <PersonalInformationSection
-                    personalInfoItem={this.props.personalInformation} 
-                    onPersonalChange={this.props.onPersonalChange}
-                />
-                <EducationSection 
-                    educationItems={this.props.education}
-                    onEducationChange={this.props.onEducationChange}
-                    onEducationDelete={this.props.onEducationDelete}
-                    onEducationAdd={this.props.onEducationAdd}
-                />
-                <ExperienceSection 
-                    experienceItems={this.props.experience}
-                    onExperienceChange={this.props.onExperienceChange}
-                    onExperienceDelete={this.props.onExperienceDelete}
-                    onExperienceAdd={this.props.onExperienceAdd}
-                 />
-                <SkillsSection 
-                    skillsItems={this.props.skills}
-                    onSkillsChange={this.props.onSkillsChange}
-                    onSkillsDelete={this.props.onSkillsDelete}
-                    onSkillsAdd={this.props.onSkillsAdd}
-                />
-                <ProjectsSection
-                    projectsItems={this.props.projects}
-                    onProjectsChange={this.props.onProjectsChange}
-                    onProjectDelete={this.props.onProjectDelete}
-                    onProjectAdd={this.props.onProjectAdd}
-                />
-                <ButtonSection 
-                    onReset={this.props.onReset}
-                    onSample={this.props.onSample}
-                />
-            </form>
-        )
-    }
+const Form = (props) => {  
+    return(
+        <form style={stylingObject.form}>
+            <PersonalInformationSection
+                personalInfoItem={props.personalInformation} 
+                onPersonalChange={props.onPersonalChange}
+            />
+            <EducationSection 
+                educationItems={props.education}
+                onEducationChange={props.onEducationChange}
+                onEducationDelete={props.onEducationDelete}
+                onEducationAdd={props.onEducationAdd}
+            />
+            <ExperienceSection 
+                experienceItems={props.experience}
+                onExperienceChange={props.onExperienceChange}
+                onExperienceDelete={props.onExperienceDelete}
+                onExperienceAdd={props.onExperienceAdd}
+             />
+            <SkillsSection 
+                skillsItems={props.skills}
+                onSkillsChange={props.onSkillsChange}
+                onSkillsDelete={props.onSkillsDelete}
+                onSkillsAdd={props.onSkillsAdd}
+            />
+            <ProjectsSection
+                projectsItems={props.projects}
+                onProjectsChange={props.onProjectsChange}
+                onProjectDelete={props.onProjectDelete}
+                onProjectAdd={props.onProjectAdd}
+            />
+            <ButtonSection 
+                onReset={props.onReset}
+                onSample={props.onSample}
+            />
+        </form>
+    )
 }
 
 const stylingObject = {

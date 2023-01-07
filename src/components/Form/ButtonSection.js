@@ -1,17 +1,11 @@
-import { Component } from "react";
+const ButtonSection = (props) => {
+    return (
+        <section style={stylingObject.section}>
+            <button style={stylingObject.btn} onClick={props.onReset}> Reset</button>
+            <button style={stylingObject.btn} onClick={props.onSample}> Sample CV</button>
+        </section>
+    )
 
-class ButtonSection extends Component {
-    constructor(props){
-        super(props);
-    }
-    render (){
-        return (
-            <section style={stylingObject.section}>
-                <button style={stylingObject.btn} onClick={this.props.onReset}> Reset</button>
-                <button style={stylingObject.btn} onClick={this.props.onSample}> Sample CV</button>
-            </section>
-        )
-    }
 }
 
 const stylingObject = { 

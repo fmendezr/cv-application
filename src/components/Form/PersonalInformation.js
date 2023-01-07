@@ -1,22 +1,15 @@
-import { Component } from "react";
-
-class PersonalInformationSection extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return (
-            <section style={stylingObject.section}>
-                <h3 style={stylingObject.h3}>Personal Information</h3>
-                <input name="firstName" placeholder="First Name" type="text" value={this.props.personalInfoItem.firstName} onChange={this.props.onPersonalChange}></input>
-                <input name="lastName" placeholder="Last Name" type="text" value={this.props.personalInfoItem.lastName} onChange={this.props.onPersonalChange}></input>
-                <input name="email" placeholder="Email" type="email" value={this.props.personalInfoItem.email} onChange={this.props.onPersonalChange}></input>
-                <input name="phone" placeholder="Phone Number" type="tel" value={this.props.personalInfoItem.phone} onChange={this.props.onPersonalChange}></input>
-                <input name="address" placeholder="Address" type="text" value={this.props.personalInfoItem.address} onChange={this.props.onPersonalChange}></input>
-                <input name="goal" placeholder="Goal" value={this.props.personalInfoItem.goal} onChange={this.props.onPersonalChange}></input>
-            </section>
-        )
-    }
+const PersonalInformationSection = (props) => {
+    return (
+        <section style={stylingObject.section}>
+            <h3 style={stylingObject.h3}>Personal Information</h3>
+            <input name="firstName" placeholder="First Name" type="text" value={props.personalInfoItem.firstName} onChange={props.onPersonalChange}></input>
+            <input name="lastName" placeholder="Last Name" type="text" value={props.personalInfoItem.lastName} onChange={props.onPersonalChange}></input>
+            <input name="email" placeholder="Email" type="email" value={props.personalInfoItem.email} onChange={props.onPersonalChange}></input>
+            <input name="phone" placeholder="Phone Number" type="tel" value={props.personalInfoItem.phone} onChange={props.onPersonalChange}></input>
+            <input name="address" placeholder="Address" type="text" value={props.personalInfoItem.address} onChange={props.onPersonalChange}></input>
+            <input name="goal" placeholder="Goal" value={props.personalInfoItem.goal} onChange={props.onPersonalChange}></input>
+        </section>
+    )
 }
 
 const stylingObject = {

@@ -1,31 +1,24 @@
-import { Component } from "react";
 import ExperienceItem from "./ExperienceItems";
 
-class ExperienceSection extends Component {
-    constructor(props){
-        super(props);
-    }
+const ExperienceSection = (props) => {
+    return (
+        <section style={stylingObject.section}>
+            <h3 style={stylingObject.h3}>Experience</h3>
+            {props.experienceItems.map((experienceItem) => {
+                return (<ExperienceItem
+                experienceItem={experienceItem}
+                onExperienceChange={props.onExperienceChange}
+                onExperienceDelete={props.onExperienceDelete}
+                id={experienceItem.id}
+                key={experienceItem.id}
+             />)
+            })}
+            <button style={stylingObject.btn} onClick={props.onExperienceAdd}>Add</button>
+        </section>
+    )
 
-     render(){
-        return (
-            <section style={stylingObject.section}>
-                <h3 style={stylingObject.h3}>Experience</h3>
-                {this.props.experienceItems.map((experienceItem) => {
-                    return (<ExperienceItem
-                    experienceItem={experienceItem}
-                    onExperienceChange={this.props.onExperienceChange}
-                    onExperienceDelete={this.props.onExperienceDelete}
-                    id={experienceItem.id}
-                    key={experienceItem.id}
-                 />)
-                })}
-                <button style={stylingObject.btn} onClick={this.props.onExperienceAdd}>Add</button>
-            </section>
-        )
-     }
 }
-
-const stylingObject = {
+    const stylingObject = {
     section: {
         display: "flex",
         flexDirection: "column",

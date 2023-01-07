@@ -1,27 +1,21 @@
-import { Component } from "react";
 import ProjectsItem from "./ProjectsItem";
 
-class ProjectsSection extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return (
-            <section style={stylingObject.section}>
-                <h3 style={stylingObject.h3}>Projects</h3>
-                {this.props.projectsItems.map((projectsItem) => {
-                    return (<ProjectsItem 
-                        projectsItem={projectsItem}
-                        onProjectsChange={this.props.onProjectsChange}
-                        onProjectDelete={this.props.onProjectDelete}
-                        id={projectsItem.id}
-                        key={projectsItem.id}
-                    />)
-                })}
-                <button style={stylingObject.btn} onClick={this.props.onProjectAdd}>Add</button>
-            </section>
-        )
-    }
+const ProjectsSection = (props) => {
+    return (
+        <section style={stylingObject.section}>
+            <h3 style={stylingObject.h3}>Projects</h3>
+            {props.projectsItems.map((projectsItem) => {
+                return (<ProjectsItem 
+                    projectsItem={projectsItem}
+                    onProjectsChange={props.onProjectsChange}
+                    onProjectDelete={props.onProjectDelete}
+                    id={projectsItem.id}
+                    key={projectsItem.id}
+                />)
+            })}
+            <button style={stylingObject.btn} onClick={props.onProjectAdd}>Add</button>
+        </section>
+    )
 }
 
 const stylingObject = {

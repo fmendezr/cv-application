@@ -1,21 +1,15 @@
-import { Component } from "react";
+const EducationItem = (props) => {
+    return (
+        <div style={stylingObject.div}>
+            <input id={props.id} name="university" type="text" placeholder="University Name" value={props.educationItem.university} onChange={props.onEducationChange}></input>
+            <input id={props.id} name="degree" type="text" placeholder="Degree" value={props.educationItem.degree} onChange={props.onEducationChange}></input>
+            <input id={props.id} name="gpa" type="text" step="0.1" max="4.0" placeholder="GPA" value={props.educationItem.gpa} onChange={props.onEducationChange}></input>
+            <input id={props.id} name="location" type="text" placeholder="Location" value={props.educationItem.location} onChange={props.onEducationChange}></input>
+            <input id={props.id} name="graduationDate" type="text" placeholder="Graduation Date" value={props.educationItem.graduationDate} onChange={props.onEducationChange}></input>
+            <button style={stylingObject.btn} id={props.id} onClick={props.onEducationDelete}> Delete </button>
+        </div>
+    )
 
-class EducationItem extends Component {
-    constructor(props){
-        super(props);
-    }
-    render (){
-        return (
-            <div style={stylingObject.div}>
-                <input id={this.props.id} name="university" type="text" placeholder="University Name" value={this.props.educationItem.university} onChange={this.props.onEducationChange}></input>
-                <input id={this.props.id} name="degree" type="text" placeholder="Degree" value={this.props.educationItem.degree} onChange={this.props.onEducationChange}></input>
-                <input id={this.props.id} name="gpa" type="text" step="0.1" max="4.0" placeholder="GPA" value={this.props.educationItem.gpa} onChange={this.props.onEducationChange}></input>
-                <input id={this.props.id} name="location" type="text" placeholder="Location" value={this.props.educationItem.location} onChange={this.props.onEducationChange}></input>
-                <input id={this.props.id} name="graduationDate" type="text" placeholder="Graduation Date" value={this.props.educationItem.graduationDate} onChange={this.props.onEducationChange}></input>
-                <button style={stylingObject.btn} id={this.props.id} onClick={this.props.onEducationDelete}> Delete </button>
-            </div>
-        )
-    }
 }
 
 const stylingObject = {

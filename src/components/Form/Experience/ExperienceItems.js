@@ -1,21 +1,14 @@
-import { Component } from "react";
-
-class ExperienceItem extends Component {
-    constructor(props){
-        super(props);
-    }
-    render (){
-        return (
-            <div style={stylingObject.div}>
-                <input id={this.props.id} name="company" type="text" placeholder="Company" value={this.props.experienceItem.company} onChange={this.props.onExperienceChange}></input>
-                <input id= {this.props.id} name="position" type="text" placeholder="Position" value={this.props.experienceItem.position} onChange={this.props.onExperienceChange}></input>
-                <input id={this.props.id} name="location" type="text" placeholder="Location" value={this.props.experienceItem.location} onChange={this.props.onExperienceChange}></input>
-                <input id={this.props.id} name="from" type="text" placeholder="From" value={this.props.experienceItem.from} onChange={this.props.onExperienceChange}></input>
-                <input id={this.props.id} name="to" type="text" placeholder="To" value={this.props.experienceItem.to} onChange={this.props.onExperienceChange}></input>
-                <button style={stylingObject.btn} id={this.props.id} onClick={this.props.onExperienceDelete}>Delete</button>
-            </div>
-        )
-    }
+const ExperienceItem = (props) => {
+    return (
+        <div style={stylingObject.div}>
+            <input id={props.id} name="company" type="text" placeholder="Company" value={props.experienceItem.company} onChange={props.onExperienceChange}></input>
+            <input id= {props.id} name="position" type="text" placeholder="Position" value={props.experienceItem.position} onChange={props.onExperienceChange}></input>
+            <input id={props.id} name="location" type="text" placeholder="Location" value={props.experienceItem.location} onChange={props.onExperienceChange}></input>
+            <input id={props.id} name="from" type="text" placeholder="From" value={props.experienceItem.from} onChange={props.onExperienceChange}></input>
+            <input id={props.id} name="to" type="text" placeholder="To" value={props.experienceItem.to} onChange={props.onExperienceChange}></input>
+            <button style={stylingObject.btn} id={props.id} onClick={props.onExperienceDelete}>Delete</button>
+        </div>
+    )
 }
 
 const stylingObject = {

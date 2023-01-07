@@ -1,4 +1,3 @@
-import React from "react"
 import EducationItem from "./EducationItem"
 
 const EducationSection = (props) => {

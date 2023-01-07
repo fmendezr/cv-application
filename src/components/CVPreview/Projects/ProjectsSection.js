@@ -1,4 +1,3 @@
-import React from "react";
 import ProjectsItem from "./ProjectsItem";
 
 const ProjectsSection = (props) => {

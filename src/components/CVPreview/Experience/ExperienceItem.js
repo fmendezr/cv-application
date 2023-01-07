@@ -1,5 +1,3 @@
-import React from "react";
-
 const ExperienceItem = (props) => {
     return(
         <div style={stylingObject.div}>

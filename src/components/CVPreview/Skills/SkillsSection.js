@@ -1,4 +1,3 @@
-import React from "react";
 import SkillsItem from "./SkillsItem";
 
 const SkillsSection = (props) => {

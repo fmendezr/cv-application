@@ -1,31 +1,26 @@
-import { Component} from "react";
 import Header from "./Header";
 import Content from "./Content";
 
-class CV extends Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
-            <div style={stylingObject.div}>
-                <Header 
-                    firstName={this.props.information.personalInformation.firstName}
-                    lastName={this.props.information.personalInformation.lastName}
-                    address={this.props.information.personalInformation.address}
-                    phone={this.props.information.personalInformation.phone}
-                    email={this.props.information.personalInformation.email}
-                />
-                <Content 
-                    objective={this.props.information.personalInformation.goal}
-                    education={this.props.information.education}
-                    skills={this.props.information.skills}
-                    projects={this.props.information.projects}
-                    experience={this.props.information.experiece}
-                />
-            </div>
-        )
-    }
+const CV = (props) => {
+    return(
+        <div style={stylingObject.div}>
+            <Header 
+                firstName={props.information.personalInformation.firstName}
+                lastName={props.information.personalInformation.lastName}
+                address={props.information.personalInformation.address}
+                phone={props.information.personalInformation.phone}
+                email={props.information.personalInformation.email}
+            />
+            <Content 
+                objective={props.information.personalInformation.goal}
+                education={props.information.education}
+                skills={props.information.skills}
+                projects={props.information.projects}
+                experience={props.information.experiece}
+            />
+        </div>
+    )
+
 }
 
 const stylingObject = {

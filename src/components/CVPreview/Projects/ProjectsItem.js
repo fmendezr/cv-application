@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProjectsItem = (props) => {
     return (
         <div>

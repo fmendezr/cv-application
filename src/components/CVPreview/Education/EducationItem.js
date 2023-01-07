@@ -1,5 +1,3 @@
-import React from "react";
-
 const EducationItem = (props) => {
     return (
         <div style={stylingObject.div}>

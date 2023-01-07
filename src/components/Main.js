@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import Form from "./Form/Form.js";
 import CV from "./CVPreview/CVPreview.js";
 
@@ -6,43 +6,18 @@ const generateRandomID = () => {
     return Math.floor(Math.random() * 10**15)
 }
 
-class Main extends Component {
-    constructor(props){
-        super(props);
-        this.handlePersonalChange = this.handlePersonalChange.bind(this);
-        this.handleExperienceChange = this.handleExperienceChange.bind(this);
-        this.handleExperienceDelete = this.handleExperienceDelete.bind(this);
-        this.handleExperienceAdd = this.handleExperienceAdd.bind(this);
-        this.handleEducationChange = this.handleEducationChange.bind(this);
-        this.handleEducationDelete = this.handleEducationDelete.bind(this);
-        this.handleEducationAdd = this.handleEducationAdd.bind(this);
-        this.handleSkillsChange = this.handleSkillsChange.bind(this);
-        this.handleSkillsDelete = this.handleSkillsDelete.bind(this);
-        this.handleSkillsAdd = this.handleSkillsAdd.bind(this);
-        this.handleProjectsChange = this.handleProjectsChange.bind(this);
-        this.handleProjectsDelete = this.handleProjectsDelete.bind(this);
-        this.handleProjectsAdd = this.handleProjectsAdd.bind(this);
-        this.handleReset = this.handleReset.bind(this);
-        this.handleSampleCV = this.handleSampleCV.bind(this);
-        this.state = {
-            personalInformation: {
-                firstName: "",
-                lastName: "",
-                email: "", 
-                address: "", 
-                phone: "",
-                goal: "",
-            },
-            experiece: [{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""},],
-            education: [{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
-            skills: [{id: generateRandomID(), type: "Databases", description:""}],
-            projects: [{id: generateRandomID(), projectName: "", link: "", description: ""}],
-        };
-    }
+const Main = () => {
+    const [cv, setCv] = useState({
+        personalInformation: {firstName: "", lastName: "", email: "", address: "", phone: "", goal: "",},
+        experiece: [{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""},],
+        education: [{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
+        skills: [{id: generateRandomID(), type: "Databases", description:""}],
+        projects: [{id: generateRandomID(), projectName: "", link: "", description: ""}],
+    });
 
-    handlePersonalChange(e){
+    const handlePersonalChange =(e) => {
         const {name, value} = e.target;
-        this.setState((previousState) => ({
+        setCv((previousState) => ({
         ...previousState,
         personalInformation: {
             ...previousState.personalInformation,
@@ -51,9 +26,9 @@ class Main extends Component {
        }))
     }
 
-    handleEducationChange(e){
+    const handleEducationChange = (e) => {
         const {name, value, id} = e.target;
-        this.setState((previousState) => {
+        setCv((previousState) => {
             const newEducation = previousState.education.map((educationItem) => {
                 if(educationItem.id == id){
                     return {...educationItem, [name]: value}
@@ -64,26 +39,26 @@ class Main extends Component {
         })
     }
 
-    handleEducationDelete(e){
+    const handleEducationDelete = (e) => {
         e.preventDefault();
-        this.setState((previousState) => {
+        setCv((previousState) => {
             const newEducation = previousState.education.filter((educationItem) => educationItem.id != e.target.id)
             return {...previousState, education: [...newEducation]}
         })
     }
 
-    handleEducationAdd(e){
+    const handleEducationAdd = (e) => {
         e.preventDefault();
-        this.setState((previousState) => {
+        setCv((previousState) => {
             return {
                 ...previousState, 
                 education: previousState.education.concat([{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}])}
         })
     }
 
-    handleExperienceChange(e){
+    const handleExperienceChange = (e) => {
         const {name, value, id} = e.target;
-        this.setState((previousState) => {
+        setCv((previousState) => {
            const newExperience = previousState.experiece.map((experieceItem) => {
                 if(experieceItem.id == id){
                     return {...experieceItem, [name]: value}
@@ -94,25 +69,25 @@ class Main extends Component {
         })
     }
 
-    handleExperienceDelete(e){
+    const handleExperienceDelete = (e) => {
         e.preventDefault();
-        this.setState((previousState) => {
+        setCv((previousState) => {
             const newExperience = previousState.experiece.filter((experieceItem) => experieceItem.id != e.target.id)
             return {...previousState, experiece: [...newExperience]}
         })
     }
 
-    handleExperienceAdd(e){
+    const handleExperienceAdd = (e) => {
       e.preventDefault();
-      this.setState((previousState) => ({
+      setCv((previousState) => ({
           ...previousState, 
           experiece: previousState.experiece.concat([{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""}])
       }))
     }
 
-    handleSkillsChange(e){
+    const handleSkillsChange = (e) => {
         const {name, value, id } = e.target;
-        this.setState((previousState) => {
+        setCv((previousState) => {
             const newSkills = previousState.skills.map((skillsItems) => {
                 if(skillsItems.id == id){
                     return {...skillsItems, [name]: value}
@@ -123,25 +98,25 @@ class Main extends Component {
         })
     }   
 
-    handleSkillsDelete(e){
+    const handleSkillsDelete = (e) => {
         e.preventDefault();
-        this.setState((previousState) => {
+        setCv((previousState) => {
             const newSkills = previousState.skills.filter((skillsItem) => skillsItem.id != e.target.id )
             return {...previousState, skills: [...newSkills]}
         })
     }
 
-    handleSkillsAdd(e){
+    const handleSkillsAdd = (e) =>{
         e.preventDefault();
-        this.setState((previousState) => {
+        setCv((previousState) => {
             return {...previousState, 
                 skills: previousState.skills.concat([{id: generateRandomID(), type: "Databases", description:""}])}
         })
     }
 
-    handleProjectsChange(e){
+    const handleProjectsChange = (e) => {
         const {name, value, id} = e.target
-        this.setState((previousState) => {
+        setCv((previousState) => {
             const newProjects = previousState.projects.map((projectsItem) => {
                 if(projectsItem.id == id){
                     return {...projectsItem, [name]: value }
@@ -152,25 +127,25 @@ class Main extends Component {
         })
     }
 
-    handleProjectsDelete(e){
+    const handleProjectsDelete = (e) => {
         e.preventDefault();
-        this.setState((previousState) => {
+        setCv((previousState) => {
             const newProjects = previousState.projects.filter((projectsItem) => projectsItem.id != e.target.id);
             return {...previousState, projects: newProjects}
         })
     }
 
-    handleProjectsAdd(e){
+    const handleProjectsAdd = (e) => {
         e.preventDefault();
-        this.setState((previousState) => {
+        setCv((previousState) => {
             return {...previousState, 
             projects: previousState.projects.concat([{id: generateRandomID(), projectName: "", link: "", description: ""}])}
         })
     }
 
-    handleReset(e){
+    const handleReset = (e) => {
         e.preventDefault();
-        this.setState({
+        setCv({
             personalInformation: {firstName: "", lastName: "", email: "", address: "", phone: "", goal: "",},
             experiece: [{id: generateRandomID(), company: "", position: "", location: "", from: "", to: ""},],
             education: [{id: generateRandomID(), university: "", degree: "", gpa: "", location: "", graduationDate: ""}],
@@ -179,9 +154,9 @@ class Main extends Component {
         })
     }
 
-    handleSampleCV(e){
+    const handleSampleCV = (e) => {
         e.preventDefault();
-        this.setState({
+        setCv({
             personalInformation: {firstName: "Felix", lastName: "Mendez", email: "mendez.flx@gmail.com", address: "15402 N Campus Mail Ctr, Tampa FL 33602", phone: "786-400-9769", goal: "Get an internship in New York"},
             experiece: [{id: generateRandomID(), company: "Graziano's Market", position: "Dishwsher", location: "Doral, Fl", from: "July 2021", to: "August 2021"},],
             education: [{id: generateRandomID(), university: "University of South Florida", degree: "Bachelor of Science in Computer Science", gpa: "4.0", location: "Tampa, Fl", graduationDate: "Expected May 2026"}, {id: generateRandomID(), university: "U.E.P. Academia Washington", degree: "High School Diploma", gpa: "4.12", location: "Caracas, Vzla", graduationDate: "Jul 2023"}],
@@ -190,37 +165,36 @@ class Main extends Component {
         })
     }
   
-    render(){
-        return (
+    return (
             <main>
                 <Form 
-                    personalInformation={this.state.personalInformation}
-                    onPersonalChange={this.handlePersonalChange}
-                    experience={this.state.experiece}
-                    onExperienceChange={this.handleExperienceChange}
-                    onExperienceDelete={this.handleExperienceDelete}
-                    onExperienceAdd={this.handleExperienceAdd}
-                    education={this.state.education}
-                    onEducationChange={this.handleEducationChange}
-                    onEducationDelete={this.handleEducationDelete}
-                    onEducationAdd={this.handleEducationAdd}
-                    skills={this.state.skills}
-                    onSkillsChange={this.handleSkillsChange}
-                    onSkillsDelete={this.handleSkillsDelete}
-                    onSkillsAdd={this.handleSkillsAdd}
-                    projects={this.state.projects}
-                    onProjectsChange={this.handleProjectsChange}
-                    onProjectDelete={this.handleProjectsDelete}
-                    onProjectAdd={this.handleProjectsAdd}
-                    onReset={this.handleReset}
-                    onSample={this.handleSampleCV}
+                    personalInformation={cv.personalInformation}
+                    onPersonalChange={handlePersonalChange}
+                    experience={cv.experiece}
+                    onExperienceChange={handleExperienceChange}
+                    onExperienceDelete={handleExperienceDelete}
+                    onExperienceAdd={handleExperienceAdd}
+                    education={cv.education}
+                    onEducationChange={handleEducationChange}
+                    onEducationDelete={handleEducationDelete}
+                    onEducationAdd={handleEducationAdd}
+                    skills={cv.skills}
+                    onSkillsChange={handleSkillsChange}
+                    onSkillsDelete={handleSkillsDelete}
+                    onSkillsAdd={handleSkillsAdd}
+                    projects={cv.projects}
+                    onProjectsChange={handleProjectsChange}
+                    onProjectDelete={handleProjectsDelete}
+                    onProjectAdd={handleProjectsAdd}
+                    onReset={handleReset}
+                    onSample={handleSampleCV}
                 />
                 <CV 
-                    information={this.state}
+                    information={cv}
                 />
             </main>
         )
     }
-}
+
 
 export default Main;
